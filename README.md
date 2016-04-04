@@ -1,5 +1,7 @@
 #阿里音乐流行趋势预测大赛，数据图像化模块
 
+## 如果有任何错误，希望同学们可以及时提出
+
 ###主要功能有以下几个:
 * ifNoSongTXT() 将目标mars_tianchi_user_actions.csv进行数据整理，整理后得到2个文件:  
 	- song_p_d_c.txt:  
