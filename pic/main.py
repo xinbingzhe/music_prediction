@@ -3,7 +3,7 @@
 # @Author  	: mr0cheng
 # @email	: c15271843451@gmail.com
 
-import os,sys
+import os,sys,time
 
 import csv
 import matplotlib.pyplot as plt
@@ -169,12 +169,12 @@ def ifNoSongTXT():
         for row in spamreader:
             if row[1] not in songs:
                 songs[row[1]] = [[0 for i in range(DAYS)] for j in range(3)]
-            songs[row[1]][int(row[3])-1][date2Num(int(row[2]))] += 1
+            songs[row[1]][int(row[3])-1][date2Num(row[4])] += 1
             
             if row[3] == "1":
                 if row[1] not in user:
                     user[row[1]] = [{} for i in range(DAYS)]
-                user[row[1]][date2Num(int(row[2]))][row[0]] = True
+                user[row[1]][date2Num(row[4])][row[0]] = True
 
     with open(SONG_P_D_C, "w") as fw:
         for i in songs:
@@ -234,7 +234,7 @@ def ifNoArtistTXT():
         spamreader = csv.reader(csvfile, delimiter=",")
         for row in spamreader:
             if row[1] in index:
-                user[index[row[1]]][date2Num(int(row[2]))][row[0]]=True
+                user[index[row[1]]][date2Num(row[4])][row[0]]=True
 
     with open(ARTIST_FAN, "w") as fw:
         for i in user:
@@ -261,10 +261,11 @@ def testForSongTXT():
 
 	
 if __name__ == "__main__":
-##    ifNoSongTXT()
-##    ifNoArtistTXT()
-    a = artist("25739ad1c56a511fcac86018ac4e49bb")
+    ifNoSongTXT()
+    ifNoArtistTXT()
+    a = artist("0c80008b0a28d356026f4b1097041689")
     a.plot_artist_play()
     a.plot_artist_fan()
     a.plot_song_play()
     a.plot_song_fan()
+    #total time 371.4s
