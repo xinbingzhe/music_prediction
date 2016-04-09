@@ -29,10 +29,12 @@ DAY_SECOND 	=86400
 
 
 
-
-def date2Num(unixTime):
-    return (unixTime-START_UNIX)//DAY_SECOND
-
+'''
+date:
+    %Y%m%d 20150301
+'''
+def date2Num(date):
+    return (int(time.mktime(time.strptime(date,'%Y%m%d')))-START_UNIX)//DAY_SECOND
 
 class artist(object):
     #ARTIST_PLAY_FOLDER=''
@@ -261,7 +263,7 @@ def testForSongTXT():
 if __name__ == "__main__":
 ##    ifNoSongTXT()
 ##    ifNoArtistTXT()
-    a = artist("0c80008b0a28d356026f4b1097041689")
+    a = artist("25739ad1c56a511fcac86018ac4e49bb")
     a.plot_artist_play()
     a.plot_artist_fan()
     a.plot_song_play()
